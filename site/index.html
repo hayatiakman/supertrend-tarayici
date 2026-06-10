@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Supertrend Yeni AL ve SAT Sinyalleri</title>
+  <style>
+    body{font-family:system-ui,sans-serif;background:#0b1020;color:#e8edf7;margin:0;padding:28px}
+    main{max-width:1100px;margin:auto}.muted,.empty{color:#9ba7bc}.status{margin-top:8px}
+    .card{overflow:auto;background:#121a2e;border:1px solid #26314b;border-radius:12px}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{padding:11px 13px;text-align:right;border-bottom:1px solid #222c43;white-space:nowrap}
+    th:first-child,td:first-child{text-align:left}th{color:#aab4c7;font-size:12px;text-transform:uppercase}
+    section{margin-top:28px}h2{font-size:19px}h2 span{font-size:13px;background:#27314b;padding:4px 9px;border-radius:20px}
+    .up{color:#43d99f}.down{color:#ff7386}.error{color:#ff8b9c}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Supertrend Yeni AL ve SAT Sinyalleri</h1>
+  <div id="summary" class="muted">Sonuclar yukleniyor...</div>
+  <div id="status" class="muted status">Sayfa her dakika otomatik yenilenir.</div>
+  <div id="sections"></div>
+  <p class="muted">Yalnizca kapanmis son mumdaki yeni donusler listelenir. Yatirim tavsiyesi degildir.</p>
+</main>
+<script>
+const intervals = ["5m","15m","1h","4h","1d","1w"];
+const format = new Intl.NumberFormat("en-US",{maximumSignificantDigits:8});
+function table(interval, signal, events, scannedAt) {
+  const matches = events.filter(x => x.signal === signal);
+  const rows = matches.map(x => `<tr><td><b>${x.symbol.replace(/USDT$/,"/USDT")}</b></td><td>${format.format(x.price)}</td><td>${format.format(x.supertrend)}</td><td>${x.distancePercent.toFixed(2)}%</td><td>${(x.quoteVolume/1e6).toFixed(1)}M</td><td>${new Date(x.candleCloseTime).toLocaleString("tr-TR")}</td></tr>`).join("");
+  const cls = signal === "YENI AL" ? "up" : "down";
+  return `<section><h2 class="${cls}">${interval} - ${signal} <span>${matches.length}</span></h2>
+  <div class="muted">Son tarama: ${new Date(scannedAt).toLocaleString("tr-TR")}</div>
+  <div class="card"><table><thead><tr><th>Parite</th><th>Fiyat</th><th>Supertrend</th><th>Mesafe</th><th>24s hacim</th><th>Mum kapanisi</th></tr></thead>
+  <tbody>${rows || '<tr><td colspan="6" class="empty">Yeni sinyal yok</td></tr>'}</tbody></table></div></section>`;
+}
+async function load() {
+  const status = document.querySelector("#status");
+  try {
+    const response = await fetch("/api/results",{cache:"no-store"});
+    if (!response.ok) throw new Error((await response.json()).error || "Veri alinamadi");
+    const data = await response.json();
+    document.querySelector("#summary").textContent = `Binance Spot | Ilk ${data.settings.limit} USDT paritesi | ATR ${data.settings.atrPeriod} / Carpan ${data.settings.multiplier}`;
+    document.querySelector("#sections").innerHTML = intervals.map(interval => {
+      const group = data.intervals[interval] || {events:[],scannedAt:data.generatedAt};
+      return table(interval,"YENI AL",group.events,group.scannedAt) + table(interval,"YENI SAT",group.events,group.scannedAt);
+    }).join("");
+    status.className = "muted status";
+    status.textContent = `Veri yenilendi: ${new Date().toLocaleTimeString("tr-TR")} | Her dakika otomatik kontrol`;
+  } catch (error) {
+    status.className = "error status";
+    status.textContent = error.message;
+  }
+}
+load();
+setInterval(load,60_000);
+</script>
+</body>
+</html>
