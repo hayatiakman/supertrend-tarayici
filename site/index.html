@@ -19,7 +19,15 @@
     .sell .coin{color:#ff91a0;background:#44242e;border:1px solid #713442}
     .coin.common{border:2px solid #f6c453;box-shadow:0 0 0 2px #f6c45325,0 0 12px #f6c45345;color:#ffe29a}
     .empty{color:#59657b}.legend{display:inline-block;width:10px;height:10px;border:2px solid #f6c453;border-radius:3px;margin:8px 4px 0 0}
-    @media(max-width:650px){body{padding:12px}h1{font-size:19px}th,td{padding:7px 5px}.coin{font-size:11px}}
+    #mobile{display:none}
+    @media(max-width:650px){
+      body{padding:12px}h1{font-size:19px}.desktop{display:none}#mobile{display:block}
+      .mobile-card{margin-top:14px;padding:12px;background:#121a2e;border:1px solid #26314b;border-radius:12px}
+      .mobile-card h2{margin:0 0 10px;color:#d7deeb;font-size:18px}
+      .mobile-group{margin-top:10px}.mobile-label{font-size:12px;font-weight:800;margin-bottom:6px}
+      .mobile-group.buy .mobile-label{color:#64e6b3}.mobile-group.sell .mobile-label{color:#ff91a0}
+      .mobile-coins{display:flex;flex-wrap:wrap;gap:6px}.mobile-coins .coin{display:inline-block;padding:6px 8px}
+    }
   </style>
 </head>
 <body>
@@ -28,11 +36,28 @@
   <div id="summary" class="muted">Sonuclar yukleniyor...</div>
   <div id="status" class="muted status">Her dakika otomatik kontrol edilir.</div>
   <div class="muted"><span class="legend"></span>Altin cerceve: birden fazla periyotta ayni sinyal</div>
-  <div id="tables"></div>
+  <div id="tables" class="desktop"></div>
+  <div id="mobile"></div>
   <p class="muted">Yalnizca son kapanmis mumda yon degistiren pariteler gosterilir. Yatirim tavsiyesi degildir.</p>
 </main>
 <script>
 const intervals = ["5m","15m","1h","4h","1d","1w"];
+const intervalMs = {
+  "5m": 5 * 60_000,
+  "15m": 15 * 60_000,
+  "1h": 60 * 60_000,
+  "4h": 4 * 60 * 60_000,
+  "1d": 24 * 60 * 60_000,
+  "1w": 7 * 24 * 60 * 60_000,
+};
+
+function currentEvents(interval, events) {
+  const now = Date.now();
+  return events.filter(event => {
+    const closeTime = new Date(event.candleCloseTime).getTime();
+    return Number.isFinite(closeTime) && now < closeTime + intervalMs[interval];
+  });
+}
 
 function signalTable(signal, cssClass, title, groups) {
   const appearances = new Map();
@@ -64,6 +89,33 @@ function signalTable(signal, cssClass, title, groups) {
     <thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div></section>`;
 }
 
+function coinList(events, signal, appearances) {
+  const matches = events.filter(event => event.signal === signal);
+  if (!matches.length) return '<span class="empty">Yok</span>';
+  return matches.map(event => {
+    const commonIntervals = appearances.get(`${signal}:${event.symbol}`) || [];
+    const common = commonIntervals.length > 1;
+    return `<span class="coin${common ? " common" : ""}"${common ? ` title="Ortak sinyal: ${commonIntervals.join(", ")}"` : ""}>${event.symbol.replace(/USDT$/,"/USDT")}</span>`;
+  }).join("");
+}
+
+function mobileCards(groups) {
+  const appearances = new Map();
+  for (const interval of intervals) {
+    for (const event of groups[interval].events) {
+      const key = `${event.signal}:${event.symbol}`;
+      const current = appearances.get(key) || [];
+      current.push(interval);
+      appearances.set(key,current);
+    }
+  }
+  return intervals.map(interval => `<article class="mobile-card">
+    <h2>${interval}</h2>
+    <div class="mobile-group buy"><div class="mobile-label">YENI AL</div><div class="mobile-coins">${coinList(groups[interval].events,"YENI AL",appearances)}</div></div>
+    <div class="mobile-group sell"><div class="mobile-label">YENI SAT</div><div class="mobile-coins">${coinList(groups[interval].events,"YENI SAT",appearances)}</div></div>
+  </article>`).join("");
+}
+
 async function load() {
   const status = document.querySelector("#status");
   try {
@@ -72,7 +124,10 @@ async function load() {
     const data = await response.json();
     const groups = Object.fromEntries(intervals.map(interval => [
       interval,
-      data.intervals[interval] || {events:[],scannedAt:data.generatedAt},
+      {
+        ...(data.intervals[interval] || {scannedAt:data.generatedAt}),
+        events: currentEvents(interval,data.intervals[interval]?.events || []),
+      },
     ]));
     const total = intervals.reduce((sum,interval) => sum + groups[interval].events.length,0);
     document.querySelector("#summary").textContent =
@@ -80,8 +135,9 @@ async function load() {
     document.querySelector("#tables").innerHTML =
       signalTable("YENI AL","buy","YENI AL",groups) +
       signalTable("YENI SAT","sell","YENI SAT",groups);
+    document.querySelector("#mobile").innerHTML = mobileCards(groups);
     status.className = "muted status";
-    status.textContent = `Veri yenilendi: ${new Date().toLocaleTimeString("tr-TR")} | Her dakika otomatik kontrol`;
+    status.textContent = `Veri yenilendi: ${new Date().toLocaleTimeString("tr-TR")} | Suresi dolan sinyaller otomatik silinir`;
   } catch (error) {
     status.className = "error status";
     status.textContent = error.message;
