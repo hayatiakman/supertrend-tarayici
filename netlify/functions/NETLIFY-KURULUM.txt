@@ -1,0 +1,29 @@
+NETLIFY 1 DAKIKALIK OTOMATIK TARAMA KURULUMU
+
+Bu surum normal HTML surukle-birak kurulumu degildir. Netlify Functions ve
+Netlify Blobs kullandigi icin proje olarak yayinlanmalidir.
+
+KOLAY YONTEM: GITHUB
+
+1. netlify-otomatik-site.zip dosyasini acin.
+2. Icindeki tum dosyalari yeni bir GitHub deposuna yukleyin.
+3. Netlify panelinde "Add new project" > "Import an existing project" secin.
+4. GitHub deposunu secip "Deploy" tusuna basin.
+5. Netlify, netlify.toml dosyasini otomatik algilar.
+6. Ilk zamanlanmis taramanin tamamlanmasi icin 1-2 dakika bekleyin.
+
+SISTEM NASIL CALISIR?
+
+- Zamanlanmis gorev her dakika uyanir.
+- 5 dakikalik mum kapaninca 5m taranir.
+- 15 dakikalik mum kapaninca 15m taranir.
+- Saat basinda 1h; dort saat basinda 4h taranir.
+- Gunluk ve haftalik mumlar kendi kapanislarinda taranir.
+- Sonuclar Netlify Blobs icinde saklanir.
+- Web sayfasi API sonucunu her dakika yeniden yukler.
+- Yalnizca aktif Binance Spot USDT pariteleri taranir.
+
+ONEMLI
+
+Mevcut Netlify Drop ile yuklenen statik site kendi kendine tarama yapamaz.
+Bu paketin GitHub baglantili veya Netlify CLI ile yayinlanmasi gerekir.

@@ -23,29 +23,31 @@ export default async () => {
   const previous = await store.get("latest", { type: "json", consistency: "strong" });
   const now = new Date();
   const due = dueIntervals(now, Boolean(previous));
-
   if (due.length === 0) {
     return new Response(JSON.stringify({ ok: true, scanned: [] }), {
       headers: { "content-type": "application/json" },
     });
   }
 
-  const fresh = await scanIntervals(due, 200);
+  const fresh = await scanIntervals(due);
   const intervals = { ...(previous?.intervals || {}) };
   for (const interval of due) {
     intervals[interval] = {
       scannedAt: now.toISOString(),
-      events: fresh[interval],
+      events: fresh.intervals[interval],
     };
   }
   const state = {
     generatedAt: now.toISOString(),
-    settings: { limit: 200, atrPeriod: 10, multiplier: 3 },
+    settings: { limit: fresh.marketCount, atrPeriod: 10, multiplier: 3 },
     intervals,
   };
   await store.setJSON("latest", state);
-
-  return new Response(JSON.stringify({ ok: true, scanned: due }), {
+  return new Response(JSON.stringify({
+    ok: true,
+    scanned: due,
+    marketCount: fresh.marketCount,
+  }), {
     headers: { "content-type": "application/json" },
   });
 };

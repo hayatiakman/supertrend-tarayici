@@ -1,0 +1,1304 @@
+{
+  "generatedAt": "2026-06-10T21:22:56.075Z",
+  "settings": {
+    "limit": 30,
+    "atrPeriod": 10,
+    "multiplier": 3,
+    "intervals": [
+      "4h",
+      "1d"
+    ]
+  },
+  "results": [
+    {
+      "ticker": {
+        "symbol": "ENAUSDT",
+        "priceChange": "-0.01070000",
+        "priceChangePercent": "-13.081",
+        "weightedAvgPrice": "0.07710299",
+        "prevClosePrice": "0.08170000",
+        "lastPrice": "0.07110000",
+        "lastQty": "16162.59000000",
+        "bidPrice": "0.07100000",
+        "bidQty": "288525.50000000",
+        "askPrice": "0.07110000",
+        "askQty": "146989.13000000",
+        "openPrice": "0.08180000",
+        "highPrice": "0.08180000",
+        "lowPrice": "0.07050000",
+        "volume": "343406746.61000000",
+        "quoteVolume": "26477685.95869800",
+        "openTime": 1781040171560,
+        "closeTime": 1781126571560,
+        "firstId": 247353380,
+        "lastId": 247440864,
+        "count": 87485
+      },
+      "signals": {
+        "4h": {
+          "close": 0.0724,
+          "direction": -1,
+          "distancePercent": -17.476245919804402,
+          "flip": false,
+          "line": 0.08773231514606394,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.0803,
+          "direction": -1,
+          "distancePercent": -29.994244703594614,
+          "flip": true,
+          "line": 0.11470485485087423,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "SAHARAUSDT",
+        "priceChange": "-0.00311000",
+        "priceChangePercent": "-16.325",
+        "weightedAvgPrice": "0.01802624",
+        "prevClosePrice": "0.01904000",
+        "lastPrice": "0.01594000",
+        "lastQty": "6185.00000000",
+        "bidPrice": "0.01594000",
+        "bidQty": "12226.00000000",
+        "askPrice": "0.01595000",
+        "askQty": "2780.00000000",
+        "openPrice": "0.01905000",
+        "highPrice": "0.02014000",
+        "lowPrice": "0.01566000",
+        "volume": "923207264.00000000",
+        "quoteVolume": "16641952.10425000",
+        "openTime": 1781040172148,
+        "closeTime": 1781126572148,
+        "firstId": 38462662,
+        "lastId": 38671038,
+        "count": 208377
+      },
+      "signals": {
+        "4h": {
+          "close": 0.01703,
+          "direction": -1,
+          "distancePercent": -31.64111560181622,
+          "flip": false,
+          "line": 0.024912635935955194,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.01856,
+          "direction": -1,
+          "distancePercent": -55.343654897961294,
+          "flip": true,
+          "line": 0.0415618429085292,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "BTCUSDT",
+        "priceChange": "-280.58000000",
+        "priceChangePercent": "-0.453",
+        "weightedAvgPrice": "61702.70744103",
+        "prevClosePrice": "61910.58000000",
+        "lastPrice": "61629.99000000",
+        "lastQty": "0.00027000",
+        "bidPrice": "61629.99000000",
+        "bidQty": "1.75109000",
+        "askPrice": "61630.00000000",
+        "askQty": "0.03097000",
+        "openPrice": "61910.57000000",
+        "highPrice": "62857.99000000",
+        "lowPrice": "60755.00000000",
+        "volume": "15590.44923000",
+        "quoteVolume": "961972927.71288040",
+        "openTime": 1781040172007,
+        "closeTime": 1781126572007,
+        "firstId": 6393885588,
+        "lastId": 6398377272,
+        "count": 4491685
+      },
+      "signals": {
+        "4h": {
+          "close": 61942.44,
+          "direction": -1,
+          "distancePercent": -3.80747399411189,
+          "flip": false,
+          "line": 64394.233701907775,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 61730,
+          "direction": -1,
+          "distancePercent": -9.802464283162042,
+          "flip": false,
+          "line": 68438.67685453442,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "ETHUSDT",
+        "priceChange": "-30.46000000",
+        "priceChangePercent": "-1.842",
+        "weightedAvgPrice": "1635.10760961",
+        "prevClosePrice": "1653.30000000",
+        "lastPrice": "1622.84000000",
+        "lastQty": "0.20090000",
+        "bidPrice": "1622.84000000",
+        "bidQty": "27.52650000",
+        "askPrice": "1622.85000000",
+        "askQty": "0.03140000",
+        "openPrice": "1653.30000000",
+        "highPrice": "1667.96000000",
+        "lowPrice": "1606.01000000",
+        "volume": "277988.80970000",
+        "quoteVolume": "454541618.12656400",
+        "openTime": 1781040172011,
+        "closeTime": 1781126572011,
+        "firstId": 4116012262,
+        "lastId": 4120502087,
+        "count": 4489826
+      },
+      "signals": {
+        "4h": {
+          "close": 1630.15,
+          "direction": -1,
+          "distancePercent": -4.700965409080944,
+          "flip": false,
+          "line": 1710.5629736938965,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 1639.52,
+          "direction": -1,
+          "distancePercent": -11.406089097215666,
+          "flip": false,
+          "line": 1850.6012245007157,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "ZECUSDT",
+        "priceChange": "-38.09000000",
+        "priceChangePercent": "-8.550",
+        "weightedAvgPrice": "428.63602424",
+        "prevClosePrice": "445.52000000",
+        "lastPrice": "407.39000000",
+        "lastQty": "0.58700000",
+        "bidPrice": "407.39000000",
+        "bidQty": "0.44300000",
+        "askPrice": "407.43000000",
+        "askQty": "0.68800000",
+        "openPrice": "445.48000000",
+        "highPrice": "449.13000000",
+        "lowPrice": "402.25000000",
+        "volume": "439653.99500000",
+        "quoteVolume": "188451540.45761000",
+        "openTime": 1781040171474,
+        "closeTime": 1781126571474,
+        "firstId": 269127572,
+        "lastId": 269819237,
+        "count": 691666
+      },
+      "signals": {
+        "4h": {
+          "close": 420.51,
+          "direction": -1,
+          "distancePercent": -13.541910867490778,
+          "flip": false,
+          "line": 486.37438580849164,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 430.02,
+          "direction": -1,
+          "distancePercent": -30.011844413832637,
+          "flip": false,
+          "line": 614.4182489143781,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "SOLUSDT",
+        "priceChange": "-2.23000000",
+        "priceChangePercent": "-3.417",
+        "weightedAvgPrice": "64.30752672",
+        "prevClosePrice": "65.26000000",
+        "lastPrice": "63.04000000",
+        "lastQty": "2.35400000",
+        "bidPrice": "63.03000000",
+        "bidQty": "670.85300000",
+        "askPrice": "63.04000000",
+        "askQty": "82.88200000",
+        "openPrice": "65.27000000",
+        "highPrice": "65.77000000",
+        "lowPrice": "62.67000000",
+        "volume": "2825977.00400000",
+        "quoteVolume": "181731591.69363000",
+        "openTime": 1781040171761,
+        "closeTime": 1781126571761,
+        "firstId": 1977830132,
+        "lastId": 1978985472,
+        "count": 1155341
+      },
+      "signals": {
+        "4h": {
+          "close": 63.56,
+          "direction": -1,
+          "distancePercent": -7.391542856936355,
+          "flip": false,
+          "line": 68.63304061076309,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 64.96,
+          "direction": -1,
+          "distancePercent": -13.859466478227182,
+          "flip": false,
+          "line": 75.41165273091877,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "XAUTUSDT",
+        "priceChange": "-179.63000000",
+        "priceChangePercent": "-4.229",
+        "weightedAvgPrice": "4141.52455967",
+        "prevClosePrice": "4247.50000000",
+        "lastPrice": "4067.87000000",
+        "lastQty": "0.00970000",
+        "bidPrice": "4067.86000000",
+        "bidQty": "3.43440000",
+        "askPrice": "4067.87000000",
+        "askQty": "3.07320000",
+        "openPrice": "4247.50000000",
+        "highPrice": "4247.51000000",
+        "lowPrice": "4062.00000000",
+        "volume": "38232.79050000",
+        "quoteVolume": "158342040.84048000",
+        "openTime": 1781040170611,
+        "closeTime": 1781126570611,
+        "firstId": 7728985,
+        "lastId": 8218876,
+        "count": 489892
+      },
+      "signals": {
+        "4h": {
+          "close": 4078.5,
+          "direction": -1,
+          "distancePercent": -3.596129680592603,
+          "flip": false,
+          "line": 4230.639274633918,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 4209.08,
+          "direction": -1,
+          "distancePercent": -6.612022301987324,
+          "flip": false,
+          "line": 4507.089781525026,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "XRPUSDT",
+        "priceChange": "-0.04320000",
+        "priceChangePercent": "-3.797",
+        "weightedAvgPrice": "1.11672087",
+        "prevClosePrice": "1.13780000",
+        "lastPrice": "1.09460000",
+        "lastQty": "10543.00000000",
+        "bidPrice": "1.09460000",
+        "bidQty": "11958.70000000",
+        "askPrice": "1.09470000",
+        "askQty": "11484.40000000",
+        "openPrice": "1.13780000",
+        "highPrice": "1.14140000",
+        "lowPrice": "1.08970000",
+        "volume": "111819950.20000000",
+        "quoteVolume": "124871672.20369000",
+        "openTime": 1781040171304,
+        "closeTime": 1781126571304,
+        "firstId": 1642624216,
+        "lastId": 1643594302,
+        "count": 970087
+      },
+      "signals": {
+        "4h": {
+          "close": 1.0981,
+          "direction": -1,
+          "distancePercent": -7.3771023219941,
+          "flip": false,
+          "line": 1.1855599722408094,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 1.1375,
+          "direction": -1,
+          "distancePercent": -9.991863859791659,
+          "flip": false,
+          "line": 1.2637746416924827,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "WLDUSDT",
+        "priceChange": "-0.07820000",
+        "priceChangePercent": "-15.167",
+        "weightedAvgPrice": "0.48431372",
+        "prevClosePrice": "0.51560000",
+        "lastPrice": "0.43740000",
+        "lastQty": "1112.10000000",
+        "bidPrice": "0.43730000",
+        "bidQty": "4600.40000000",
+        "askPrice": "0.43740000",
+        "askQty": "112.10000000",
+        "openPrice": "0.51560000",
+        "highPrice": "0.52520000",
+        "lowPrice": "0.42890000",
+        "volume": "200766286.80000000",
+        "quoteVolume": "97233866.89623000",
+        "openTime": 1781040171261,
+        "closeTime": 1781126571261,
+        "firstId": 278551676,
+        "lastId": 279448965,
+        "count": 897290
+      },
+      "signals": {
+        "4h": {
+          "close": 0.4476,
+          "direction": 1,
+          "distancePercent": 9.632260242273698,
+          "flip": false,
+          "line": 0.40827398706444573,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.5085,
+          "direction": 1,
+          "distancePercent": 63.42292436471533,
+          "flip": false,
+          "line": 0.31115585648508337,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "GENIUSUSDT",
+        "priceChange": "0.00580000",
+        "priceChangePercent": "1.285",
+        "weightedAvgPrice": "0.45009063",
+        "prevClosePrice": "0.45130000",
+        "lastPrice": "0.45700000",
+        "lastQty": "50.00000000",
+        "bidPrice": "0.45730000",
+        "bidQty": "339.70000000",
+        "askPrice": "0.45740000",
+        "askQty": "463.20000000",
+        "openPrice": "0.45120000",
+        "highPrice": "0.52260000",
+        "lowPrice": "0.41670000",
+        "volume": "200205408.40000000",
+        "quoteVolume": "90110578.16580000",
+        "openTime": 1781040165546,
+        "closeTime": 1781126565546,
+        "firstId": 7012006,
+        "lastId": 7742033,
+        "count": 730028
+      },
+      "signals": {
+        "4h": {
+          "close": 0.4727,
+          "direction": 1,
+          "distancePercent": 13.183617451148653,
+          "flip": false,
+          "line": 0.4176399470568457,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.4531,
+          "direction": -1,
+          "distancePercent": -38.18936120869728,
+          "flip": false,
+          "line": 0.73304532821582,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "XLMUSDT",
+        "priceChange": "-0.01150000",
+        "priceChangePercent": "-5.907",
+        "weightedAvgPrice": "0.18550482",
+        "prevClosePrice": "0.19480000",
+        "lastPrice": "0.18320000",
+        "lastQty": "1557.00000000",
+        "bidPrice": "0.18310000",
+        "bidQty": "22807.00000000",
+        "askPrice": "0.18320000",
+        "askQty": "58318.00000000",
+        "openPrice": "0.19470000",
+        "highPrice": "0.19490000",
+        "lowPrice": "0.18160000",
+        "volume": "440047365.00000000",
+        "quoteVolume": "81630905.32280000",
+        "openTime": 1781040171343,
+        "closeTime": 1781126571343,
+        "firstId": 292121886,
+        "lastId": 292600380,
+        "count": 478495
+      },
+      "signals": {
+        "4h": {
+          "close": 0.185,
+          "direction": -1,
+          "distancePercent": -9.927640859104041,
+          "flip": false,
+          "line": 0.20539042361554358,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.1923,
+          "direction": 1,
+          "distancePercent": 0.9616970710080284,
+          "flip": false,
+          "line": 0.19046827220500487,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "NEARUSDT",
+        "priceChange": "-0.25100000",
+        "priceChangePercent": "-11.357",
+        "weightedAvgPrice": "2.09172631",
+        "prevClosePrice": "2.21000000",
+        "lastPrice": "1.95900000",
+        "lastQty": "1244.70000000",
+        "bidPrice": "1.95900000",
+        "bidQty": "7371.20000000",
+        "askPrice": "1.96000000",
+        "askQty": "1078.80000000",
+        "openPrice": "2.21000000",
+        "highPrice": "2.21600000",
+        "lowPrice": "1.93000000",
+        "volume": "34283194.40000000",
+        "quoteVolume": "71711059.64970000",
+        "openTime": 1781040171969,
+        "closeTime": 1781126571969,
+        "firstId": 347821060,
+        "lastId": 348414327,
+        "count": 593268
+      },
+      "signals": {
+        "4h": {
+          "close": 2.01,
+          "direction": -1,
+          "distancePercent": -11.412772311969176,
+          "flip": false,
+          "line": 2.2689501099170015,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 2.152,
+          "direction": -1,
+          "distancePercent": -25.20873620514028,
+          "flip": false,
+          "line": 2.8773414043418044,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "BNBUSDT",
+        "priceChange": "-9.28000000",
+        "priceChangePercent": "-1.559",
+        "weightedAvgPrice": "589.16524998",
+        "prevClosePrice": "595.08000000",
+        "lastPrice": "585.79000000",
+        "lastQty": "2.70000000",
+        "bidPrice": "585.79000000",
+        "bidQty": "5.68500000",
+        "askPrice": "585.80000000",
+        "askQty": "0.03200000",
+        "openPrice": "595.07000000",
+        "highPrice": "598.52000000",
+        "lowPrice": "580.68000000",
+        "volume": "114437.90600000",
+        "quoteVolume": "67422837.49579000",
+        "openTime": 1781040170898,
+        "closeTime": 1781126570898,
+        "firstId": 1521719153,
+        "lastId": 1522443963,
+        "count": 724811
+      },
+      "signals": {
+        "4h": {
+          "close": 588.06,
+          "direction": -1,
+          "distancePercent": -4.404948354849815,
+          "flip": false,
+          "line": 615.1573641937919,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 593.44,
+          "direction": -1,
+          "distancePercent": -11.7875804832423,
+          "flip": false,
+          "line": 672.7397380674547,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "DOGEUSDT",
+        "priceChange": "-0.00256000",
+        "priceChangePercent": "-3.008",
+        "weightedAvgPrice": "0.08399130",
+        "prevClosePrice": "0.08511000",
+        "lastPrice": "0.08256000",
+        "lastQty": "129.00000000",
+        "bidPrice": "0.08255000",
+        "bidQty": "162030.00000000",
+        "askPrice": "0.08256000",
+        "askQty": "981.00000000",
+        "openPrice": "0.08512000",
+        "highPrice": "0.08547000",
+        "lowPrice": "0.08218000",
+        "volume": "526405009.00000000",
+        "quoteVolume": "44213443.43871000",
+        "openTime": 1781040171265,
+        "closeTime": 1781126571265,
+        "firstId": 1563350585,
+        "lastId": 1563982766,
+        "count": 632182
+      },
+      "signals": {
+        "4h": {
+          "close": 0.08316,
+          "direction": -1,
+          "distancePercent": -6.469855053665229,
+          "flip": false,
+          "line": 0.08891251055765508,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.08479,
+          "direction": -1,
+          "distancePercent": -11.716456991862072,
+          "flip": false,
+          "line": 0.09604281512827834,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "ADAUSDT",
+        "priceChange": "-0.00610000",
+        "priceChangePercent": "-3.672",
+        "weightedAvgPrice": "0.16240480",
+        "prevClosePrice": "0.16600000",
+        "lastPrice": "0.16000000",
+        "lastQty": "5607.40000000",
+        "bidPrice": "0.16000000",
+        "bidQty": "57387.80000000",
+        "askPrice": "0.16010000",
+        "askQty": "56202.40000000",
+        "openPrice": "0.16610000",
+        "highPrice": "0.16720000",
+        "lowPrice": "0.15860000",
+        "volume": "180489948.00000000",
+        "quoteVolume": "29312433.86364000",
+        "openTime": 1781040171187,
+        "closeTime": 1781126571187,
+        "firstId": 767886822,
+        "lastId": 768025236,
+        "count": 138415
+      },
+      "signals": {
+        "4h": {
+          "close": 0.1608,
+          "direction": -1,
+          "distancePercent": -8.94598911065419,
+          "flip": false,
+          "line": 0.17659848086803515,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.1653,
+          "direction": -1,
+          "distancePercent": -16.37021751113563,
+          "flip": false,
+          "line": 0.19765685749811718,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "PAXGUSDT",
+        "priceChange": "-180.48000000",
+        "priceChangePercent": "-4.240",
+        "weightedAvgPrice": "4157.31549586",
+        "prevClosePrice": "4256.28000000",
+        "lastPrice": "4075.81000000",
+        "lastQty": "0.03820000",
+        "bidPrice": "4075.80000000",
+        "bidQty": "0.04400000",
+        "askPrice": "4075.81000000",
+        "askQty": "1.04000000",
+        "openPrice": "4256.29000000",
+        "highPrice": "4256.57000000",
+        "lowPrice": "4071.05000000",
+        "volume": "7044.72280000",
+        "quoteVolume": "29287135.26050600",
+        "openTime": 1781040170437,
+        "closeTime": 1781126570437,
+        "firstId": 47875879,
+        "lastId": 47969578,
+        "count": 93700
+      },
+      "signals": {
+        "4h": {
+          "close": 4087.69,
+          "direction": -1,
+          "distancePercent": -3.668203680101307,
+          "flip": false,
+          "line": 4243.344519836001,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 4218.22,
+          "direction": -1,
+          "distancePercent": -6.802662094075039,
+          "flip": false,
+          "line": 4526.116405017862,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "TRXUSDT",
+        "priceChange": "-0.00130000",
+        "priceChangePercent": "-0.403",
+        "weightedAvgPrice": "0.32234752",
+        "prevClosePrice": "0.32290000",
+        "lastPrice": "0.32160000",
+        "lastQty": "5276.90000000",
+        "bidPrice": "0.32160000",
+        "bidQty": "61173.00000000",
+        "askPrice": "0.32170000",
+        "askQty": "167305.80000000",
+        "openPrice": "0.32290000",
+        "highPrice": "0.32340000",
+        "lowPrice": "0.32110000",
+        "volume": "89755792.20000000",
+        "quoteVolume": "28932556.61537000",
+        "openTime": 1781040171203,
+        "closeTime": 1781126571203,
+        "firstId": 401130157,
+        "lastId": 401188075,
+        "count": 57919
+      },
+      "signals": {
+        "4h": {
+          "close": 0.3217,
+          "direction": -1,
+          "distancePercent": -2.104719307537615,
+          "flip": false,
+          "line": 0.32861645395411776,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.3229,
+          "direction": -1,
+          "distancePercent": -6.7418649556206205,
+          "flip": false,
+          "line": 0.34624325250160687,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "BABYUSDT",
+        "priceChange": "-0.00061000",
+        "priceChangePercent": "-3.987",
+        "weightedAvgPrice": "0.01591551",
+        "prevClosePrice": "0.01530000",
+        "lastPrice": "0.01469000",
+        "lastQty": "1722.00000000",
+        "bidPrice": "0.01469000",
+        "bidQty": "47221.00000000",
+        "askPrice": "0.01470000",
+        "askQty": "131663.00000000",
+        "openPrice": "0.01530000",
+        "highPrice": "0.01735000",
+        "lowPrice": "0.01467000",
+        "volume": "1756063967.00000000",
+        "quoteVolume": "27948660.87281000",
+        "openTime": 1781040171818,
+        "closeTime": 1781126571818,
+        "firstId": 33164525,
+        "lastId": 33548850,
+        "count": 384326
+      },
+      "signals": {
+        "4h": {
+          "close": 0.01507,
+          "direction": 1,
+          "distancePercent": 13.539623746976757,
+          "flip": false,
+          "line": 0.013272899365584935,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.01519,
+          "direction": 1,
+          "distancePercent": 31.676051427189293,
+          "flip": false,
+          "line": 0.011535886621265645,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "ALLOUSDT",
+        "priceChange": "-0.03120000",
+        "priceChangePercent": "-7.588",
+        "weightedAvgPrice": "0.40720957",
+        "prevClosePrice": "0.41120000",
+        "lastPrice": "0.38000000",
+        "lastQty": "14.50000000",
+        "bidPrice": "0.37990000",
+        "bidQty": "498.10000000",
+        "askPrice": "0.38020000",
+        "askQty": "609.30000000",
+        "openPrice": "0.41120000",
+        "highPrice": "0.45760000",
+        "lowPrice": "0.36980000",
+        "volume": "62182435.90000000",
+        "quoteVolume": "25321282.82333000",
+        "openTime": 1781040171333,
+        "closeTime": 1781126571333,
+        "firstId": 26666175,
+        "lastId": 27082007,
+        "count": 415833
+      },
+      "signals": {
+        "4h": {
+          "close": 0.3835,
+          "direction": 1,
+          "distancePercent": 29.795046027424014,
+          "flip": false,
+          "line": 0.2954658222617922,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.4099,
+          "direction": 1,
+          "distancePercent": 170.3832714293422,
+          "flip": false,
+          "line": 0.15159961555059331,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "SUIUSDT",
+        "priceChange": "-0.02700000",
+        "priceChangePercent": "-3.600",
+        "weightedAvgPrice": "0.74447675",
+        "prevClosePrice": "0.74990000",
+        "lastPrice": "0.72300000",
+        "lastQty": "22.10000000",
+        "bidPrice": "0.72300000",
+        "bidQty": "4312.30000000",
+        "askPrice": "0.72310000",
+        "askQty": "1188.60000000",
+        "openPrice": "0.75000000",
+        "highPrice": "0.76180000",
+        "lowPrice": "0.71790000",
+        "volume": "33669948.30000000",
+        "quoteVolume": "25066493.67101000",
+        "openTime": 1781040171137,
+        "closeTime": 1781126571137,
+        "firstId": 523329665,
+        "lastId": 523633879,
+        "count": 304215
+      },
+      "signals": {
+        "4h": {
+          "close": 0.7333,
+          "direction": -1,
+          "distancePercent": -8.47278939519531,
+          "flip": false,
+          "line": 0.8011825064419756,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.7495,
+          "direction": -1,
+          "distancePercent": -17.48519908288983,
+          "flip": false,
+          "line": 0.9083218909452457,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "STRAXUSDT",
+        "priceChange": "0.00553000",
+        "priceChangePercent": "67.193",
+        "weightedAvgPrice": "0.01239340",
+        "prevClosePrice": "0.00823000",
+        "lastPrice": "0.01376000",
+        "lastQty": "7752.00000000",
+        "bidPrice": "0.01377000",
+        "bidQty": "653.00000000",
+        "askPrice": "0.01379000",
+        "askQty": "1264.00000000",
+        "openPrice": "0.00823000",
+        "highPrice": "0.01535000",
+        "lowPrice": "0.00822000",
+        "volume": "1618587596.00000000",
+        "quoteVolume": "20059802.45485000",
+        "openTime": 1781040172159,
+        "closeTime": 1781126572159,
+        "firstId": 44741885,
+        "lastId": 44949308,
+        "count": 207424
+      },
+      "signals": {
+        "4h": {
+          "close": 0.01188,
+          "direction": 1,
+          "distancePercent": 19.35673213409665,
+          "flip": false,
+          "line": 0.009953355615209776,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.00833,
+          "direction": -1,
+          "distancePercent": -35.28335501064866,
+          "flip": false,
+          "line": 0.012871495426517618,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "HOMEUSDT",
+        "priceChange": "0.00056000",
+        "priceChangePercent": "1.722",
+        "weightedAvgPrice": "0.03253245",
+        "prevClosePrice": "0.03251000",
+        "lastPrice": "0.03308000",
+        "lastQty": "3177.00000000",
+        "bidPrice": "0.03308000",
+        "bidQty": "4251.00000000",
+        "askPrice": "0.03310000",
+        "askQty": "5133.00000000",
+        "openPrice": "0.03252000",
+        "highPrice": "0.03596000",
+        "lowPrice": "0.02950000",
+        "volume": "605324801.00000000",
+        "quoteVolume": "19692701.05544000",
+        "openTime": 1781040171144,
+        "closeTime": 1781126571144,
+        "firstId": 14677318,
+        "lastId": 15124838,
+        "count": 447521
+      },
+      "signals": {
+        "4h": {
+          "close": 0.03454,
+          "direction": -1,
+          "distancePercent": -24.26499260117603,
+          "flip": false,
+          "line": 0.045606386248978364,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.03313,
+          "direction": -1,
+          "distancePercent": -44.26649346503277,
+          "flip": false,
+          "line": 0.05944359517234793,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "PEPEUSDT",
+        "priceChange": "-0.00000010",
+        "priceChangePercent": "-3.597",
+        "weightedAvgPrice": "0.00000274",
+        "prevClosePrice": "0.00000278",
+        "lastPrice": "0.00000268",
+        "lastQty": "249999999.00",
+        "bidPrice": "0.00000267",
+        "bidQty": "41479301694.00",
+        "askPrice": "0.00000268",
+        "askQty": "33286865772.00",
+        "openPrice": "0.00000278",
+        "highPrice": "0.00000281",
+        "lowPrice": "0.00000265",
+        "volume": "7045437570322.00",
+        "quoteVolume": "19281867.16781980",
+        "openTime": 1781040171188,
+        "closeTime": 1781126571188,
+        "firstId": 554952451,
+        "lastId": 555006228,
+        "count": 53778
+      },
+      "signals": {
+        "4h": {
+          "close": 0.0000027,
+          "direction": -1,
+          "distancePercent": -9.133633126152292,
+          "flip": false,
+          "line": 0.000002971396450513406,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.00000277,
+          "direction": -1,
+          "distancePercent": -16.253411688967283,
+          "flip": false,
+          "line": 0.0000033075974267898414,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "OPNUSDT",
+        "priceChange": "0.00850000",
+        "priceChangePercent": "9.300",
+        "weightedAvgPrice": "0.10139559",
+        "prevClosePrice": "0.09140000",
+        "lastPrice": "0.09990000",
+        "lastQty": "2617.10000000",
+        "bidPrice": "0.09970000",
+        "bidQty": "4820.10000000",
+        "askPrice": "0.09980000",
+        "askQty": "6741.40000000",
+        "openPrice": "0.09140000",
+        "highPrice": "0.11990000",
+        "lowPrice": "0.08440000",
+        "volume": "189396252.60000000",
+        "quoteVolume": "19203944.67711000",
+        "openTime": 1781040171541,
+        "closeTime": 1781126571541,
+        "firstId": 15435220,
+        "lastId": 15602584,
+        "count": 167365
+      },
+      "signals": {
+        "4h": {
+          "close": 0.1057,
+          "direction": -1,
+          "distancePercent": -19.98119596446716,
+          "flip": false,
+          "line": 0.13209395125808587,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.0918,
+          "direction": -1,
+          "distancePercent": -62.63872513355467,
+          "flip": false,
+          "line": 0.24570896022192978,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "STGUSDT",
+        "priceChange": "0.06210000",
+        "priceChangePercent": "19.565",
+        "weightedAvgPrice": "0.38485505",
+        "prevClosePrice": "0.31740000",
+        "lastPrice": "0.37950000",
+        "lastQty": "569.00000000",
+        "bidPrice": "0.37920000",
+        "bidQty": "67.30000000",
+        "askPrice": "0.37950000",
+        "askQty": "837.30000000",
+        "openPrice": "0.31740000",
+        "highPrice": "0.45360000",
+        "lowPrice": "0.31420000",
+        "volume": "48506793.80000000",
+        "quoteVolume": "18668084.62503000",
+        "openTime": 1781040167062,
+        "closeTime": 1781126567062,
+        "firstId": 46754417,
+        "lastId": 47207005,
+        "count": 452589
+      },
+      "signals": {
+        "4h": {
+          "close": 0.3769,
+          "direction": 1,
+          "distancePercent": 22.47261212462118,
+          "flip": false,
+          "line": 0.3077422727103166,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.3422,
+          "direction": -1,
+          "distancePercent": -4.382988838700347,
+          "flip": false,
+          "line": 0.35788610817664124,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "TONUSDT",
+        "priceChange": "-0.10000000",
+        "priceChangePercent": "-5.851",
+        "weightedAvgPrice": "1.66248731",
+        "prevClosePrice": "1.71000000",
+        "lastPrice": "1.60900000",
+        "lastQty": "5.39000000",
+        "bidPrice": "1.60800000",
+        "bidQty": "9039.93000000",
+        "askPrice": "1.60900000",
+        "askQty": "416.68000000",
+        "openPrice": "1.70900000",
+        "highPrice": "1.71800000",
+        "lowPrice": "1.59700000",
+        "volume": "11124767.34000000",
+        "quoteVolume": "18494784.58088000",
+        "openTime": 1781040171688,
+        "closeTime": 1781126571688,
+        "firstId": 107410084,
+        "lastId": 107608746,
+        "count": 198663
+      },
+      "signals": {
+        "4h": {
+          "close": 1.625,
+          "direction": 1,
+          "distancePercent": 4.821596147727504,
+          "flip": false,
+          "line": 1.5502530582627743,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 1.701,
+          "direction": -1,
+          "distancePercent": -22.840898156418156,
+          "flip": false,
+          "line": 2.2045357700615726,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "AVAXUSDT",
+        "priceChange": "-0.25500000",
+        "priceChangePercent": "-3.836",
+        "weightedAvgPrice": "6.52419633",
+        "prevClosePrice": "6.64700000",
+        "lastPrice": "6.39300000",
+        "lastQty": "15.01000000",
+        "bidPrice": "6.39300000",
+        "bidQty": "505.86000000",
+        "askPrice": "6.39400000",
+        "askQty": "157.29000000",
+        "openPrice": "6.64800000",
+        "highPrice": "6.68000000",
+        "lowPrice": "6.35800000",
+        "volume": "2701762.69000000",
+        "quoteVolume": "17626830.21896000",
+        "openTime": 1781040172070,
+        "closeTime": 1781126572070,
+        "firstId": 438729823,
+        "lastId": 438992321,
+        "count": 262499
+      },
+      "signals": {
+        "4h": {
+          "close": 6.461,
+          "direction": -1,
+          "distancePercent": -7.881107539301733,
+          "flip": false,
+          "line": 7.013762136530821,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 6.639,
+          "direction": -1,
+          "distancePercent": -17.994907985006673,
+          "flip": false,
+          "line": 8.095838730095156,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "TAOUSDT",
+        "priceChange": "-9.60000000",
+        "priceChangePercent": "-4.585",
+        "weightedAvgPrice": "207.34822267",
+        "prevClosePrice": "209.40000000",
+        "lastPrice": "199.80000000",
+        "lastQty": "4.12710000",
+        "bidPrice": "199.80000000",
+        "bidQty": "68.57050000",
+        "askPrice": "199.90000000",
+        "askQty": "0.18480000",
+        "openPrice": "209.40000000",
+        "highPrice": "214.60000000",
+        "lowPrice": "198.80000000",
+        "volume": "81608.55070000",
+        "quoteVolume": "16921387.94196000",
+        "openTime": 1781040171601,
+        "closeTime": 1781126571601,
+        "firstId": 150883703,
+        "lastId": 151086662,
+        "count": 202960
+      },
+      "signals": {
+        "4h": {
+          "close": 202.4,
+          "direction": -1,
+          "distancePercent": -7.463486304040572,
+          "flip": false,
+          "line": 218.72447093156237,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 206.1,
+          "direction": -1,
+          "distancePercent": -17.31189438826387,
+          "flip": false,
+          "line": 249.24987514860626,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "RLUSDUSDT",
+        "priceChange": "0.00000000",
+        "priceChangePercent": "0.000",
+        "weightedAvgPrice": "1.00073979",
+        "prevClosePrice": "1.00080000",
+        "lastPrice": "1.00090000",
+        "lastQty": "8469.00000000",
+        "bidPrice": "1.00090000",
+        "bidQty": "2649001.00000000",
+        "askPrice": "1.00100000",
+        "askQty": "9610.00000000",
+        "openPrice": "1.00090000",
+        "highPrice": "1.00110000",
+        "lowPrice": "1.00050000",
+        "volume": "16329344.00000000",
+        "quoteVolume": "16341424.29420000",
+        "openTime": 1781040170089,
+        "closeTime": 1781126570089,
+        "firstId": 731770,
+        "lastId": 736316,
+        "count": 4547
+      },
+      "signals": {
+        "4h": {
+          "close": 1.0009,
+          "direction": -1,
+          "distancePercent": -0.021487623352585892,
+          "flip": false,
+          "line": 1.0011151158454186,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 1.0007,
+          "direction": 1,
+          "distancePercent": 0.05788161297512218,
+          "flip": false,
+          "line": 1.0001211137676465,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    },
+    {
+      "ticker": {
+        "symbol": "KATUSDT",
+        "priceChange": "0.00071000",
+        "priceChangePercent": "11.833",
+        "weightedAvgPrice": "0.00653351",
+        "prevClosePrice": "0.00600000",
+        "lastPrice": "0.00671000",
+        "lastQty": "19420.00000000",
+        "bidPrice": "0.00671000",
+        "bidQty": "126598.00000000",
+        "askPrice": "0.00672000",
+        "askQty": "25829.00000000",
+        "openPrice": "0.00600000",
+        "highPrice": "0.00739000",
+        "lowPrice": "0.00582000",
+        "volume": "2336483449.00000000",
+        "quoteVolume": "15265443.95411000",
+        "openTime": 1781040170839,
+        "closeTime": 1781126570839,
+        "firstId": 6534092,
+        "lastId": 6682139,
+        "count": 148048
+      },
+      "signals": {
+        "4h": {
+          "close": 0.00706,
+          "direction": 1,
+          "distancePercent": 37.981777323443225,
+          "flip": false,
+          "line": 0.005116617670064248,
+          "candleCloseTime": 1781121599999
+        },
+        "1d": {
+          "close": 0.00617,
+          "direction": -1,
+          "distancePercent": -11.260290375873842,
+          "flip": false,
+          "line": 0.006952918852376465,
+          "candleCloseTime": 1781049599999
+        }
+      }
+    }
+  ]
+}

@@ -36,7 +36,6 @@ function supertrend(candles, period = 10, multiplier = 3) {
     } else {
       continue;
     }
-
     const midpoint = (high + low) / 2;
     const basicUpper = midpoint + multiplier * atr[i];
     const basicLower = midpoint - multiplier * atr[i];
@@ -44,20 +43,17 @@ function supertrend(candles, period = 10, multiplier = 3) {
       ? basicUpper : upper[i - 1];
     lower[i] = i === period - 1 || basicLower > lower[i - 1] || previousClose < lower[i - 1]
       ? basicLower : lower[i - 1];
-
     if (i === period - 1) direction[i] = close >= midpoint ? 1 : -1;
     else if (direction[i - 1] === -1 && close > upper[i]) direction[i] = 1;
     else if (direction[i - 1] === 1 && close < lower[i]) direction[i] = -1;
     else direction[i] = direction[i - 1];
     line[i] = direction[i] === 1 ? lower[i] : upper[i];
   }
-
   const last = candles.length - 1;
   return {
     direction: direction[last],
     flip: direction[last] !== direction[last - 1],
     line: line[last],
-    close: candles[last].close,
     distancePercent: ((candles[last].close - line[last]) / line[last]) * 100,
     candleCloseTime: candles[last].closeTime,
   };
@@ -76,7 +72,7 @@ async function getSignal(symbol, interval) {
   return supertrend(candles);
 }
 
-async function getMarkets(limit) {
+async function getMarkets() {
   const [tickers, exchangeInfo] = await Promise.all([
     getJson("/api/v3/ticker/24hr"),
     getJson("/api/v3/exchangeInfo"),
@@ -90,8 +86,7 @@ async function getMarkets(limit) {
     .filter((ticker) => active.has(ticker.symbol)
       && !EXCLUDED.test(ticker.symbol)
       && Number(ticker.quoteVolume) > 0)
-    .sort((a, b) => Number(b.quoteVolume) - Number(a.quoteVolume))
-    .slice(0, limit);
+    .sort((a, b) => Number(b.quoteVolume) - Number(a.quoteVolume));
 }
 
 async function mapWithConcurrency(items, concurrency, worker) {
@@ -100,15 +95,15 @@ async function mapWithConcurrency(items, concurrency, worker) {
   async function runWorker() {
     while (next < items.length) {
       const index = next++;
-      results[index] = await worker(items[index], index);
+      results[index] = await worker(items[index]);
     }
   }
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, runWorker));
   return results;
 }
 
-export async function scanIntervals(intervals, limit = 200) {
-  const markets = await getMarkets(limit);
+export async function scanIntervals(intervals) {
+  const markets = await getMarkets();
   const jobs = markets.flatMap((ticker) =>
     intervals.map((interval) => ({ ticker, interval })));
   const scanned = await mapWithConcurrency(jobs, 40, async ({ ticker, interval }) => ({
@@ -116,10 +111,9 @@ export async function scanIntervals(intervals, limit = 200) {
     interval,
     signal: await getSignal(ticker.symbol, interval),
   }));
-
-  const result = {};
+  const result = { marketCount: markets.length, intervals: {} };
   for (const interval of intervals) {
-    result[interval] = scanned
+    result.intervals[interval] = scanned
       .filter((item) => item.interval === interval && item.signal.flip)
       .map(({ ticker, signal }) => ({
         symbol: ticker.symbol,
