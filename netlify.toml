@@ -1,0 +1,11 @@
+[build]
+  publish = "site"
+  functions = "netlify/functions"
+
+[functions."scheduled-scan"]
+  schedule = "* * * * *"
+
+[[redirects]]
+  from = "/api/results"
+  to = "/.netlify/functions/results"
+  status = 200
