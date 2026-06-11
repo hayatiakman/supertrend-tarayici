@@ -9,12 +9,14 @@ function dueIntervals(now, hasPreviousData) {
   const hour = now.getUTCHours();
   const day = now.getUTCDay();
   const due = [];
-  if (minute % 5 === 0) due.push("5m");
-  if (minute % 15 === 0) due.push("15m");
-  if (minute === 0) due.push("1h");
-  if (minute === 0 && hour % 4 === 0) due.push("4h");
-  if (minute === 0 && hour === 0) due.push("1d");
-  if (minute === 0 && hour === 0 && day === 1) due.push("1w");
+  // Spread scans across separate minutes so 415 markets do not create a
+  // large request burst when several candles close at the same time.
+  if (minute % 5 === 1) due.push("5m");
+  if (minute % 15 === 2) due.push("15m");
+  if (minute === 3) due.push("1h");
+  if (minute === 4 && hour % 4 === 0) due.push("4h");
+  if (minute === 5 && hour === 0) due.push("1d");
+  if (minute === 6 && hour === 0 && day === 1) due.push("1w");
   return due;
 }
 
