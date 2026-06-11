@@ -111,7 +111,14 @@ export async function scanIntervals(intervals) {
     interval,
     signal: await getSignal(ticker.symbol, interval),
   }));
-  const result = { marketCount: markets.length, intervals: {} };
+  const result = {
+    marketCount: markets.length,
+    marketPrices: Object.fromEntries(markets.map((ticker) => [
+      ticker.symbol,
+      Number(ticker.lastPrice),
+    ])),
+    intervals: {},
+  };
   for (const interval of intervals) {
     result.intervals[interval] = scanned
       .filter((item) => item.interval === interval && item.signal.flip)

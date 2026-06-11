@@ -12,6 +12,25 @@ function onlyNewEvents(previousEvents = [], freshEvents = []) {
   return freshEvents.filter((event) => !previousKeys.has(eventKey(event)));
 }
 
+function telegramPreferences() {
+  const signals = (Netlify.env.get("TELEGRAM_SIGNALS") || "AL,SAT")
+    .split(",").map((value) => value.trim().toUpperCase());
+  const intervals = (Netlify.env.get("TELEGRAM_INTERVALS") || ALL_INTERVALS.join(","))
+    .split(",").map((value) => value.trim());
+  const minVolume = Number(Netlify.env.get("TELEGRAM_MIN_VOLUME") || 0);
+  return { signals, intervals, minVolume };
+}
+
+function filterTelegramEvents(interval, events) {
+  const preferences = telegramPreferences();
+  if (!preferences.intervals.includes(interval)) return [];
+  return events.filter((event) => {
+    const direction = event.signal === "YENI AL" ? "AL" : "SAT";
+    return preferences.signals.includes(direction)
+      && event.quoteVolume >= preferences.minVolume;
+  });
+}
+
 function telegramMessage(interval, events) {
   const buys = events.filter((event) => event.signal === "YENI AL");
   const sells = events.filter((event) => event.signal === "YENI SAT");
@@ -68,6 +87,40 @@ async function sendTelegram(interval, events) {
   }
 }
 
+function updateHistory(previousHistory, newEvents, interval, prices, now) {
+  const cutoff = now.getTime() - 24 * 60 * 60_000;
+  const history = (previousHistory || [])
+    .filter((item) => new Date(item.detectedAt).getTime() >= cutoff);
+  const known = new Set(history.map((item) =>
+    `${item.symbol}:${item.signal}:${item.interval}:${item.candleCloseTime}`));
+
+  for (const event of newEvents) {
+    const key = `${event.symbol}:${event.signal}:${interval}:${event.candleCloseTime}`;
+    if (!known.has(key)) {
+      history.push({
+        ...event,
+        interval,
+        detectedAt: now.toISOString(),
+        entryPrice: event.price,
+      });
+      known.add(key);
+    }
+  }
+
+  return history.map((item) => {
+    const currentPrice = prices[item.symbol] ?? item.currentPrice ?? item.entryPrice;
+    const rawChangePercent = ((currentPrice - item.entryPrice) / item.entryPrice) * 100;
+    return {
+      ...item,
+      currentPrice,
+      rawChangePercent,
+      performancePercent: item.signal === "YENI AL"
+        ? rawChangePercent
+        : -rawChangePercent,
+    };
+  }).sort((a, b) => new Date(b.detectedAt) - new Date(a.detectedAt));
+}
+
 function dueIntervals(now, hasPreviousData) {
   if (!hasPreviousData) return ALL_INTERVALS;
   const minute = now.getUTCMinutes();
@@ -99,6 +152,7 @@ export default async () => {
   const fresh = await scanIntervals(due);
   const intervals = { ...(previous?.intervals || {}) };
   const notifications = [];
+  let history = previous?.history || [];
   for (const interval of due) {
     const freshEvents = fresh.intervals[interval];
     const newEvents = previous
@@ -108,12 +162,15 @@ export default async () => {
       scannedAt: now.toISOString(),
       events: freshEvents,
     };
-    if (newEvents.length) notifications.push(sendTelegram(interval, newEvents));
+    history = updateHistory(history, newEvents, interval, fresh.marketPrices, now);
+    const telegramEvents = filterTelegramEvents(interval, newEvents);
+    if (telegramEvents.length) notifications.push(sendTelegram(interval, telegramEvents));
   }
   const state = {
     generatedAt: now.toISOString(),
     settings: { limit: fresh.marketCount, atrPeriod: 10, multiplier: 3 },
     intervals,
+    history,
   };
   await store.setJSON("latest", state);
   await Promise.all(notifications);
