@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Supertrend Yeni AL ve SAT Sinyalleri | SadecePara</title>
+  <meta name="description" content="Binance USDT paritelerinde 5 dakika, 15 dakika, 1 saat, 4 saat, günlük ve haftalık yeni Supertrend AL ve SAT sinyallerini takip edin.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://sadecepara.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Supertrend Yeni AL ve SAT Sinyalleri">
+  <meta property="og:description" content="Binance USDT paritelerindeki güncel Supertrend yön değişimlerini farklı zaman dilimlerinde izleyin.">
+  <meta property="og:url" content="https://sadecepara.com/">
+  <meta property="og:site_name" content="SadecePara">
+  <meta name="twitter:card" content="summary">
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--card:#121a2e;--line:#26314b;--muted:#9ba7bc;--buy:#64e6b3;--sell:#ff91a0;--gold:#f6c453}
+    *{box-sizing:border-box}body{font-family:system-ui,sans-serif;background:var(--bg);color:#e8edf7;margin:0;padding:20px}
+    main{max-width:1200px;margin:auto}h1{font-size:23px;margin:0 0 7px}h2{font-size:18px;margin:0 0 9px}
+    .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.muted{color:var(--muted);font-size:13px}.status{margin-top:5px}.error{color:var(--sell)}
+    .telegram{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:9px;background:#229ed9;color:#fff;text-decoration:none;font-weight:750;font-size:14px;white-space:nowrap}
+    .telegram:hover{background:#168bc2}.telegram svg{width:18px;height:18px;fill:currentColor}
+    .controls{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-top:16px}.controls input,.controls select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:#fff;font:inherit}
+    .overview{display:none;margin-top:16px;padding:13px;background:#211d16;border:1px solid #665323;border-radius:11px}.overview.active{display:block}.overview-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+    section{margin-top:20px}.card{overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    table{width:100%;min-width:750px;border-collapse:collapse;table-layout:fixed}th,td{padding:9px 7px;border-right:1px solid #222c43;border-bottom:1px solid #222c43;text-align:center}
+    th{font-size:13px;text-transform:uppercase;background:#182137}th span{opacity:.65;font-size:11px}tr:last-child td{border-bottom:0}
+    .coin{display:block;padding:6px 4px;border-radius:6px;font-weight:750;font-size:12px;text-decoration:none}.coin small{display:block;margin-top:2px;opacity:.72;font-weight:500;font-size:10px}
+    .coin:hover{filter:brightness(1.22);transform:translateY(-1px)}.buy h2,.buy th{color:var(--buy)}.sell h2,.sell th{color:var(--sell)}
+    .buy .coin{color:var(--buy);background:#173d35;border:1px solid #24644f}.sell .coin{color:var(--sell);background:#44242e;border:1px solid #713442}
+    .coin.common{border:2px solid var(--gold);box-shadow:0 0 0 2px #f6c45325,0 0 12px #f6c45345;color:#ffe29a}.empty{color:#59657b}
+    .legend{display:inline-block;width:10px;height:10px;border:2px solid var(--gold);border-radius:3px;margin:8px 4px 0 0}
+    #mobile{display:none}.history table{min-width:850px;table-layout:auto}.history .positive{color:var(--buy);font-weight:750}.history .negative{color:var(--sell);font-weight:750}
+    .history-link{color:#dce5f5;text-decoration:none;font-weight:700}.history-link:hover{text-decoration:underline}
+    @media(max-width:650px){
+      body{padding:12px}h1{font-size:19px}.topbar{display:block}.telegram{margin-top:12px}.controls{grid-template-columns:1fr}.desktop{display:none}#mobile{display:block}
+      .mobile-card{margin-top:14px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:12px}.mobile-card h2{margin:0 0 10px;color:#d7deeb}
+      .mobile-group{margin-top:10px}.mobile-label{font-size:12px;font-weight:800;margin-bottom:6px}.mobile-group.buy .mobile-label{color:var(--buy)}.mobile-group.sell .mobile-label{color:var(--sell)}
+      .mobile-coins{display:flex;flex-wrap:wrap;gap:6px}.mobile-coins .coin{display:inline-block;padding:7px 9px}.history{display:none}
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <div>
+      <h1>Supertrend Yeni AL ve SAT Sinyalleri</h1>
+      <div id="summary" class="muted">Sonuçlar yükleniyor...</div>
+      <div id="status" class="muted status">Her dakika otomatik kontrol edilir.</div>
+    </div>
+    <a class="telegram" href="https://t.me/sadeceparacom" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6c.3-1.3-.5-1.8-1.6-1.4L2.8 10c-1.2.5-1.2 1.2-.2 1.5l4.5 1.4 1.7 5.2c.2.7.1 1 .9 1 .6 0 .9-.3 1.2-.6l2.2-2.1 4.6 3.4c.9.5 1.5.3 1.7-.8l2.5-14.4zM8.5 12.6l9.9-6.2c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.3-1.9-4.7z"/></svg>
+      Telegram kanalına katıl
+    </a>
+  </div>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Parite ara: BTC, ETH, SOL...">
+    <select id="volume">
+      <option value="0">Tüm hacimler</option>
+      <option value="1000000">1M USDT üzeri</option>
+      <option value="5000000">5M USDT üzeri</option>
+      <option value="10000000">10M USDT üzeri</option>
+    </select>
+  </div>
+  <div id="overview" class="overview"></div>
+  <div class="muted"><span class="legend"></span>Altın çerçeve: birden fazla periyotta aynı sinyal</div>
+  <div id="tables" class="desktop"></div>
+  <div id="mobile"></div>
+
+  <section class="history">
+    <h2>Son 24 Saat Sinyal Geçmişi</h2>
+    <div class="card"><table>
+      <thead><tr><th>Parite</th><th>Periyot</th><th>Sinyal</th><th>Geliş</th><th>Giriş</th><th>Güncel</th><th>Performans</th></tr></thead>
+      <tbody id="history"></tbody>
+    </table></div>
+  </section>
+  <p class="muted">Yalnızca son kapanmış mumda yön değiştiren pariteler gösterilir. Bilgilendirme amaçlıdır, yatırım tavsiyesi değildir.</p>
+</main>
+<script>
+const intervals=["5m","15m","1h","4h","1d","1w"];
+const intervalMs={"5m":300000,"15m":900000,"1h":3600000,"4h":14400000,"1d":86400000,"1w":604800000};
+const tvIntervals={"5m":"5","15m":"15","1h":"60","4h":"240","1d":"D","1w":"W"};
+let latestData=null;
+
+const tvUrl=(symbol,interval)=>`https://www.tradingview.com/chart/?symbol=${encodeURIComponent(`BINANCE:${symbol}`)}&interval=${tvIntervals[interval]}`;
+const age=time=>{const mins=Math.max(0,Math.floor((Date.now()-new Date(time))/60000));if(mins<1)return"şimdi";if(mins<60)return`${mins} dk önce`;const hours=Math.floor(mins/60);return hours<24?`${hours} sa önce`:`${Math.floor(hours/24)} gün önce`};
+const price=value=>Number(value).toLocaleString("en-US",{maximumSignificantDigits:8});
+const currentEvents=(interval,events)=>events.filter(event=>Date.now()<new Date(event.candleCloseTime).getTime()+intervalMs[interval]);
+
+function filteredGroups(data){
+  const query=document.querySelector("#search").value.trim().toUpperCase();
+  const minVolume=Number(document.querySelector("#volume").value);
+  return Object.fromEntries(intervals.map(interval=>{
+    const group=data.intervals[interval]||{events:[],scannedAt:data.generatedAt};
+    return [interval,{...group,events:currentEvents(interval,group.events||[]).filter(event=>
+      (!query||event.symbol.includes(query))&&event.quoteVolume>=minVolume)}];
+  }));
+}
+
+function appearances(groups){
+  const map=new Map();
+  for(const interval of intervals)for(const event of groups[interval].events){
+    const key=`${event.signal}:${event.symbol}`,list=map.get(key)||[];list.push(interval);map.set(key,list);
+  }
+  return map;
+}
+
+function coin(event,interval,commonIntervals){
+  const common=commonIntervals.length>1;
+  return `<a class="coin${common?" common":""}" href="${tvUrl(event.symbol,interval)}" target="_blank" rel="noopener noreferrer" title="${common?`Ortak sinyal: ${commonIntervals.join(", ")}`:"TradingView grafiğini aç"}">${event.symbol.replace(/USDT$/,"/USDT")}<small>${age(event.candleCloseTime)}</small></a>`;
+}
+
+function signalTable(signal,cssClass,title,groups,map){
+  const columns=intervals.map(interval=>({interval,events:groups[interval].events.filter(event=>event.signal===signal)}));
+  const maxRows=Math.max(1,...columns.map(column=>column.events.length));
+  const headers=columns.map(column=>`<th>${column.interval} <span>${column.events.length}</span></th>`).join("");
+  const rows=Array.from({length:maxRows},(_,index)=>`<tr>${columns.map(column=>{
+    const event=column.events[index];return `<td>${event?coin(event,column.interval,map.get(`${signal}:${event.symbol}`)||[]):index===0?'<span class="empty">-</span>':""}</td>`;
+  }).join("")}</tr>`).join("");
+  return `<section class="${cssClass}"><h2>${title}</h2><div class="card"><table><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div></section>`;
+}
+
+function mobileCards(groups,map){
+  return intervals.map(interval=>`<article class="mobile-card"><h2>${interval}</h2>${["YENI AL","YENI SAT"].map(signal=>{
+    const css=signal==="YENI AL"?"buy":"sell",events=groups[interval].events.filter(event=>event.signal===signal);
+    return `<div class="mobile-group ${css}"><div class="mobile-label">${signal.replace("YENI","YENİ")}</div><div class="mobile-coins">${events.length?events.map(event=>coin(event,interval,map.get(`${signal}:${event.symbol}`)||[])).join(""):'<span class="empty">Yok</span>'}</div></div>`;
+  }).join("")}</article>`).join("");
+}
+
+function renderOverview(groups,map){
+  const common=[...map.entries()].filter(([,periods])=>periods.length>1);
+  const box=document.querySelector("#overview");
+  if(!common.length){box.className="overview";box.innerHTML="";return}
+  box.className="overview active";
+  box.innerHTML=`<strong>Çoklu Periyot Ortak Sinyaller (${common.length})</strong><div class="overview-list">${common.map(([key,periods])=>{
+    const [signal,symbol]=key.split(":");return `<span class="coin common">${symbol.replace(/USDT$/,"/USDT")} · ${signal.replace("YENI","YENİ")} · ${periods.join(", ")}</span>`;
+  }).join("")}</div>`;
+}
+
+function renderHistory(data){
+  const query=document.querySelector("#search").value.trim().toUpperCase(),minVolume=Number(document.querySelector("#volume").value);
+  const items=(data.history||[]).filter(item=>(!query||item.symbol.includes(query))&&item.quoteVolume>=minVolume);
+  document.querySelector("#history").innerHTML=items.length?items.slice(0,150).map(item=>{
+    const perf=Number(item.performancePercent||0),cls=perf>=0?"positive":"negative";
+    return `<tr><td><a class="history-link" href="${tvUrl(item.symbol,item.interval)}" target="_blank">${item.symbol.replace(/USDT$/,"/USDT")}</a></td><td>${item.interval}</td><td>${item.signal.replace("YENI","YENİ")}</td><td>${age(item.detectedAt)}</td><td>${price(item.entryPrice)}</td><td>${price(item.currentPrice)}</td><td class="${cls}">${perf>=0?"+":""}${perf.toFixed(2)}%</td></tr>`;
+  }).join(""):'<tr><td colspan="7" class="empty">Henüz geçmiş sinyal yok</td></tr>';
+}
+
+function render(){
+  if(!latestData)return;
+  const groups=filteredGroups(latestData),map=appearances(groups);
+  const total=intervals.reduce((sum,interval)=>sum+groups[interval].events.length,0);
+  document.querySelector("#summary").textContent=`Binance Spot | ${latestData.settings.limit} aktif USDT paritesi | ATR ${latestData.settings.atrPeriod} / Çarpan ${latestData.settings.multiplier} | ${total} görünür sinyal`;
+  document.querySelector("#tables").innerHTML=signalTable("YENI AL","buy","YENİ AL",groups,map)+signalTable("YENI SAT","sell","YENİ SAT",groups,map);
+  document.querySelector("#mobile").innerHTML=mobileCards(groups,map);
+  renderOverview(groups,map);renderHistory(latestData);
+}
+
+async function load(){
+  const status=document.querySelector("#status");
+  try{
+    const apiUrl=location.protocol==="file:"?"https://sadecepara.com/api/results":"/api/results";
+    const response=await fetch(`${apiUrl}?ts=${Date.now()}`,{cache:"no-store"});
+    if(!response.ok)throw new Error("Veri alınamadı");
+    latestData=await response.json();render();
+    status.className="muted status";status.textContent=`Veri yenilendi: ${new Date().toLocaleTimeString("tr-TR")} | Süresi dolan sinyaller otomatik silinir`;
+  }catch(error){status.className="error status";status.textContent=error.message}
+}
+document.querySelector("#search").addEventListener("input",render);
+document.querySelector("#volume").addEventListener("change",render);
+load();setInterval(load,60000);setInterval(render,60000);
+</script>
+</body>
+</html>
