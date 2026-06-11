@@ -31,9 +31,10 @@
     *{box-sizing:border-box}body{font-family:system-ui,sans-serif;background:var(--bg);color:#e8edf7;margin:0;padding:20px}
     main{max-width:1200px;margin:auto}h1{font-size:23px;margin:0 0 7px}h2{font-size:18px;margin:0 0 9px}
     .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.muted{color:var(--muted);font-size:13px}.status{margin-top:5px}.error{color:var(--sell)}
-    .telegram{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:9px;background:#229ed9;color:#fff;text-decoration:none;font-weight:750;font-size:14px;white-space:nowrap}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.telegram,.markets-link{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:9px;color:#fff;text-decoration:none;font-weight:750;font-size:14px;white-space:nowrap}
+    .telegram{background:#229ed9}.markets-link{background:#273656}
     .telegram:hover{background:#168bc2}.telegram svg{width:18px;height:18px;fill:currentColor}
-    .controls{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-top:16px}.controls input,.controls select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:#fff;font:inherit}
+    .controls{display:grid;grid-template-columns:1fr auto 180px;gap:10px;margin-top:16px}.controls input,.controls select,.controls button{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:#fff;font:inherit}.controls button{width:auto;background:#273656;font-weight:800;cursor:pointer}.controls button:hover{background:#34466d}
     .overview{display:none;margin-top:16px;padding:13px;background:#211d16;border:1px solid #665323;border-radius:11px}.overview.active{display:block}.overview-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
     section{margin-top:20px}.card{overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
     table{width:100%;min-width:750px;border-collapse:collapse;table-layout:fixed}th,td{padding:9px 7px;border-right:1px solid #222c43;border-bottom:1px solid #222c43;text-align:center}
@@ -46,7 +47,7 @@
     #mobile{display:none}.history table{min-width:850px;table-layout:auto}.history .positive{color:var(--buy);font-weight:750}.history .negative{color:var(--sell);font-weight:750}
     .history-link{color:#dce5f5;text-decoration:none;font-weight:700}.history-link:hover{text-decoration:underline}
     @media(max-width:650px){
-      body{padding:12px}h1{font-size:19px}.topbar{display:block}.telegram{margin-top:12px}.controls{grid-template-columns:1fr}.desktop{display:none}#mobile{display:block}
+      body{padding:12px}h1{font-size:19px}.topbar{display:block}.telegram{margin-top:12px}.controls{grid-template-columns:1fr auto}.controls select{grid-column:1/-1}.desktop{display:none}#mobile{display:block}
       .mobile-card{margin-top:14px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:12px}.mobile-card h2{margin:0 0 10px;color:#d7deeb}
       .mobile-group{margin-top:10px}.mobile-label{font-size:12px;font-weight:800;margin-bottom:6px}.mobile-group.buy .mobile-label{color:var(--buy)}.mobile-group.sell .mobile-label{color:var(--sell)}
       .mobile-coins{display:flex;flex-wrap:wrap;gap:6px}.mobile-coins .coin{display:inline-block;padding:7px 9px}.history{display:none}
@@ -61,14 +62,18 @@
       <div id="summary" class="muted">Sonuçlar yükleniyor...</div>
       <div id="status" class="muted status">Her dakika otomatik kontrol edilir.</div>
     </div>
-    <a class="telegram" href="https://t.me/sadeceparacom" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6c.3-1.3-.5-1.8-1.6-1.4L2.8 10c-1.2.5-1.2 1.2-.2 1.5l4.5 1.4 1.7 5.2c.2.7.1 1 .9 1 .6 0 .9-.3 1.2-.6l2.2-2.1 4.6 3.4c.9.5 1.5.3 1.7-.8l2.5-14.4zM8.5 12.6l9.9-6.2c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.3-1.9-4.7z"/></svg>
-      Telegram kanalına katıl
-    </a>
+    <div class="actions">
+      <a class="markets-link" href="/pariteler">Tüm pariteler</a>
+      <a class="telegram" href="https://t.me/sadeceparacom" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6c.3-1.3-.5-1.8-1.6-1.4L2.8 10c-1.2.5-1.2 1.2-.2 1.5l4.5 1.4 1.7 5.2c.2.7.1 1 .9 1 .6 0 .9-.3 1.2-.6l2.2-2.1 4.6 3.4c.9.5 1.5.3 1.7-.8l2.5-14.4zM8.5 12.6l9.9-6.2c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.3-1.9-4.7z"/></svg>
+        Telegram kanalına katıl
+      </a>
+    </div>
   </div>
 
   <div class="controls">
     <input id="search" type="search" placeholder="Parite ara: BTC, ETH, SOL...">
+    <button id="open-pair" type="button">Yeni pariteyi aç</button>
     <select id="volume">
       <option value="0">Tüm hacimler</option>
       <option value="1000000">1M USDT üzeri</option>
@@ -121,7 +126,8 @@ function appearances(groups){
 
 function coin(event,interval,commonIntervals){
   const common=commonIntervals.length>1;
-  return `<a class="coin${common?" common":""}" href="${tvUrl(event.symbol,interval)}" target="_blank" rel="noopener noreferrer" title="${common?`Ortak sinyal: ${commonIntervals.join(", ")}`:"TradingView grafiğini aç"}">${event.symbol.replace(/USDT$/,"/USDT")}<small>${age(event.candleCloseTime)}</small></a>`;
+  const detailUrl=`/kripto/${event.symbol.replace(/USDT$/,"").toLowerCase()}?interval=${interval}`;
+  return `<a class="coin${common?" common":""}" href="${detailUrl}" title="${common?`Ortak sinyal: ${commonIntervals.join(", ")}`:"Parite detay sayfasını aç"}">${event.symbol.replace(/USDT$/,"/USDT")}<small>${age(event.candleCloseTime)}</small></a>`;
 }
 
 function signalTable(signal,cssClass,title,groups,map){
@@ -156,7 +162,8 @@ function renderHistory(data){
   const items=(data.history||[]).filter(item=>(!query||item.symbol.includes(query))&&item.quoteVolume>=minVolume);
   document.querySelector("#history").innerHTML=items.length?items.slice(0,150).map(item=>{
     const perf=Number(item.performancePercent||0),cls=perf>=0?"positive":"negative";
-    return `<tr><td><a class="history-link" href="${tvUrl(item.symbol,item.interval)}" target="_blank">${item.symbol.replace(/USDT$/,"/USDT")}</a></td><td>${item.interval}</td><td>${item.signal.replace("YENI","YENİ")}</td><td>${age(item.detectedAt)}</td><td>${price(item.entryPrice)}</td><td>${price(item.currentPrice)}</td><td class="${cls}">${perf>=0?"+":""}${perf.toFixed(2)}%</td></tr>`;
+    const detailUrl=`/kripto/${item.symbol.replace(/USDT$/,"").toLowerCase()}?interval=${item.interval}`;
+    return `<tr><td><a class="history-link" href="${detailUrl}">${item.symbol.replace(/USDT$/,"/USDT")}</a></td><td>${item.interval}</td><td>${item.signal.replace("YENI","YENİ")}</td><td>${age(item.detectedAt)}</td><td>${price(item.entryPrice)}</td><td>${price(item.currentPrice)}</td><td class="${cls}">${perf>=0?"+":""}${perf.toFixed(2)}%</td></tr>`;
   }).join(""):'<tr><td colspan="7" class="empty">Henüz geçmiş sinyal yok</td></tr>';
 }
 
@@ -170,6 +177,21 @@ function render(){
   renderOverview(groups,map);renderHistory(latestData);
 }
 
+function openSearchedPair(){
+  const input=document.querySelector("#search");
+  const status=document.querySelector("#status");
+  const base=input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g,"").replace(/USDT$/,"");
+  if(!base){input.focus();return}
+  const symbol=`${base}USDT`;
+  const markets=latestData?.markets||[];
+  if(markets.length&&!markets.includes(symbol)){
+    status.className="error status";
+    status.textContent=`${base}/USDT aktif Binance pariteleri arasında bulunamadı.`;
+    return;
+  }
+  location.href=`/kripto/${base.toLowerCase()}`;
+}
+
 async function load(){
   const status=document.querySelector("#status");
   try{
@@ -181,13 +203,17 @@ async function load(){
   }catch(error){status.className="error status";status.textContent=error.message}
 }
 document.querySelector("#search").addEventListener("input",render);
+document.querySelector("#search").addEventListener("keydown",event=>{
+  if(event.key==="Enter"){event.preventDefault();openSearchedPair()}
+});
+document.querySelector("#open-pair").addEventListener("click",openSearchedPair);
 document.querySelector("#volume").addEventListener("change",render);
 document.addEventListener("click",event=>{
   const link=event.target.closest("a");
   if(!link)return;
   if(link.classList.contains("telegram"))gtag("event","telegram_click");
   if(link.classList.contains("coin")||link.classList.contains("history-link")){
-    gtag("event","tradingview_click",{link_url:link.href,link_text:link.textContent.trim()});
+    gtag("event","coin_detail_click",{link_url:link.href,link_text:link.textContent.trim()});
   }
 });
 load();setInterval(load,60000);setInterval(render,60000);

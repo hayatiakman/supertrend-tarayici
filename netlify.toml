@@ -9,3 +9,19 @@
   from = "/api/results"
   to = "/.netlify/functions/results"
   status = 200
+
+[[redirects]]
+  from = "/kripto/*"
+  to = "/.netlify/functions/coin-page?symbol=:splat"
+  status = 200
+
+[[redirects]]
+  from = "/pariteler"
+  to = "/.netlify/functions/markets-page"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
+  status = 200
+  force = true

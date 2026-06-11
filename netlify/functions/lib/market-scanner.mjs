@@ -69,6 +69,7 @@ async function getSignal(symbol, interval) {
       close: Number(item[4]),
       closeTime: Number(item[6]),
     }));
+  if (candles.length < 12) return null;
   return supertrend(candles);
 }
 
@@ -113,15 +114,29 @@ export async function scanIntervals(intervals) {
   }));
   const result = {
     marketCount: markets.length,
+    markets: markets.map((ticker) => ticker.symbol),
     marketPrices: Object.fromEntries(markets.map((ticker) => [
       ticker.symbol,
       Number(ticker.lastPrice),
     ])),
     intervals: {},
+    states: {},
   };
   for (const interval of intervals) {
+    result.states[interval] = scanned
+      .filter((item) => item.interval === interval && item.signal)
+      .map(({ ticker, signal }) => ({
+        symbol: ticker.symbol,
+        direction: signal.direction === 1 ? "AL" : "SAT",
+        isNew: signal.flip,
+        price: Number(ticker.lastPrice),
+        supertrend: signal.line,
+        distancePercent: signal.distancePercent,
+        quoteVolume: Number(ticker.quoteVolume),
+        candleCloseTime: new Date(signal.candleCloseTime).toISOString(),
+      }));
     result.intervals[interval] = scanned
-      .filter((item) => item.interval === interval && item.signal.flip)
+      .filter((item) => item.interval === interval && item.signal?.flip)
       .map(({ ticker, signal }) => ({
         symbol: ticker.symbol,
         signal: signal.direction === 1 ? "YENI AL" : "YENI SAT",

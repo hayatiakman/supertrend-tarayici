@@ -121,8 +121,10 @@ function updateHistory(previousHistory, newEvents, interval, prices, now) {
   }).sort((a, b) => new Date(b.detectedAt) - new Date(a.detectedAt));
 }
 
-function dueIntervals(now, hasPreviousData) {
-  if (!hasPreviousData) return ALL_INTERVALS;
+function dueIntervals(now, previous) {
+  if (!previous) return ["5m"];
+  const missingInterval = ALL_INTERVALS.find((interval) => !previous.states?.[interval]);
+  if (missingInterval) return [missingInterval];
   const minute = now.getUTCMinutes();
   const hour = now.getUTCHours();
   const day = now.getUTCDay();
@@ -142,7 +144,7 @@ export default async () => {
   const store = getStore("supertrend-results");
   const previous = await store.get("latest", { type: "json", consistency: "strong" });
   const now = new Date();
-  const due = dueIntervals(now, Boolean(previous));
+  const due = dueIntervals(now, previous);
   if (due.length === 0) {
     return new Response(JSON.stringify({ ok: true, scanned: [] }), {
       headers: { "content-type": "application/json" },
@@ -151,6 +153,7 @@ export default async () => {
 
   const fresh = await scanIntervals(due);
   const intervals = { ...(previous?.intervals || {}) };
+  const states = { ...(previous?.states || {}) };
   const notifications = [];
   let history = previous?.history || [];
   for (const interval of due) {
@@ -162,6 +165,10 @@ export default async () => {
       scannedAt: now.toISOString(),
       events: freshEvents,
     };
+    states[interval] = {
+      scannedAt: now.toISOString(),
+      markets: fresh.states[interval],
+    };
     history = updateHistory(history, newEvents, interval, fresh.marketPrices, now);
     const telegramEvents = filterTelegramEvents(interval, newEvents);
     if (telegramEvents.length) notifications.push(sendTelegram(interval, telegramEvents));
@@ -169,7 +176,9 @@ export default async () => {
   const state = {
     generatedAt: now.toISOString(),
     settings: { limit: fresh.marketCount, atrPeriod: 10, multiplier: 3 },
+    markets: fresh.markets,
     intervals,
+    states,
     history,
   };
   await store.setJSON("latest", state);
