@@ -61,7 +61,7 @@ function telegramMessage(interval, events) {
   lines.push(
     "",
     "Detaylı tablo:",
-    "https://sadecepara.com",
+    "https://sadecepara.com/?utm_source=telegram&utm_medium=social&utm_campaign=signals",
     "",
     "Bilgilendirme amaçlıdır, yatırım tavsiyesi değildir.",
   );
