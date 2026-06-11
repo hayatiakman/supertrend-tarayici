@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sadecepara.com/sitemap.xml
