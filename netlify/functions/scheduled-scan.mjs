@@ -3,6 +3,48 @@ import { scanIntervals } from "./lib/market-scanner.mjs";
 
 const ALL_INTERVALS = ["5m", "15m", "1h", "4h", "1d", "1w"];
 
+function eventKey(event) {
+  return `${event.symbol}:${event.signal}:${event.candleCloseTime}`;
+}
+
+function onlyNewEvents(previousEvents = [], freshEvents = []) {
+  const previousKeys = new Set(previousEvents.map(eventKey));
+  return freshEvents.filter((event) => !previousKeys.has(eventKey(event)));
+}
+
+function telegramMessage(interval, events) {
+  const buys = events.filter((event) => event.signal === "YENI AL");
+  const sells = events.filter((event) => event.signal === "YENI SAT");
+  const lines = [`SadecePara Supertrend | ${interval}`];
+  if (buys.length) {
+    lines.push("", "YENI AL", ...buys.map((event) => event.symbol.replace(/USDT$/, "/USDT")));
+  }
+  if (sells.length) {
+    lines.push("", "YENI SAT", ...sells.map((event) => event.symbol.replace(/USDT$/, "/USDT")));
+  }
+  lines.push("", "https://sadecepara.com", "Yatirim tavsiyesi degildir.");
+  return lines.join("\n");
+}
+
+async function sendTelegram(interval, events) {
+  const token = Netlify.env.get("TELEGRAM_BOT_TOKEN");
+  const chatId = Netlify.env.get("TELEGRAM_CHAT_ID");
+  if (!token || !chatId || events.length === 0) return;
+  const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: telegramMessage(interval, events),
+      disable_web_page_preview: true,
+    }),
+  });
+  const result = await response.json();
+  if (!response.ok || !result.ok) {
+    throw new Error(`Telegram error: ${result.description || response.status}`);
+  }
+}
+
 function dueIntervals(now, hasPreviousData) {
   if (!hasPreviousData) return ALL_INTERVALS;
   const minute = now.getUTCMinutes();
@@ -33,11 +75,17 @@ export default async () => {
 
   const fresh = await scanIntervals(due);
   const intervals = { ...(previous?.intervals || {}) };
+  const notifications = [];
   for (const interval of due) {
+    const freshEvents = fresh.intervals[interval];
+    const newEvents = previous
+      ? onlyNewEvents(previous.intervals?.[interval]?.events, freshEvents)
+      : [];
     intervals[interval] = {
       scannedAt: now.toISOString(),
-      events: fresh.intervals[interval],
+      events: freshEvents,
     };
+    if (newEvents.length) notifications.push(sendTelegram(interval, newEvents));
   }
   const state = {
     generatedAt: now.toISOString(),
@@ -45,6 +93,7 @@ export default async () => {
     intervals,
   };
   await store.setJSON("latest", state);
+  await Promise.all(notifications);
   return new Response(JSON.stringify({
     ok: true,
     scanned: due,
